@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>scirpy.tl.summarize_clonal_expansion &mdash; scirpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/typehints.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scirpy.tl.alpha_diversity" href="scirpy.tl.alpha_diversity.html" />
+    <link rel="prev" title="scirpy.tl.clonal_expansion" href="scirpy.tl.clonal_expansion.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#input-output-io">Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../api.html#generic">Generic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#quality-control">Quality control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#define-and-visualize-clonotypes">Define and visualize clonotypes</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#analyse-clonal-diversity">Analyse clonal diversity</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.tl.summarize_clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.clonotype_imbalance.html">scirpy.tl.clonotype_imbalance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#v-d-j-gene-usage">V(D)J gene usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.ir_dist">IR distance metrics: <code class="docutils literal notranslate"><span class="pre">ir_dist</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ir-biology.html">Immune receptor (IR) model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>scirpy.tl.summarize_clonal_expansion</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonal_expansion.py#L99-L163" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scirpy-tl-summarize-clonal-expansion">
+<h1>scirpy.tl.summarize_clonal_expansion<a class="headerlink" href="#scirpy-tl-summarize-clonal-expansion" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="scirpy.tl.summarize_clonal_expansion">
+<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">summarize_clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="n">groupby</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">target_col</span><span class="o">=</span><span class="default_value">'clonotype'</span></em>, <em class="sig-param"><span class="n">summarize_by</span><span class="o">=</span><span class="default_value">'cell'</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.summarize_clonal_expansion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summarizes clonal expansion by a grouping variable.</p>
+<p>Removes all entries with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> prior to summarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>annotated data matrix</p>
+</dd>
+<dt><strong>groupby</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>summarize by this column in <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>.</p>
+</dd>
+<dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>column in obs which holds the clonotype information</p>
+</dd>
+<dt><strong>summarize_by</strong> : <span class="annotation terse">{‘cell’, ‘clonotype’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘cell’, ‘clonotype’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'cell'</span></code>)</dt><dd><p>Can be either <code class="docutils literal notranslate"><span class="pre">cell</span></code> to count cells belonging to a clonotype (the default),
+or “clonotype” to count clonotypes. The former leads to a over-representation
+of expanded clonotypes but better represents the fraction of expanded cells.</p>
+</dd>
+<dt><strong>normalize</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">False</span></code>, plot absolute cell counts. If <code class="docutils literal notranslate"><span class="pre">True</span></code>, scale each group to 1.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Additional arguments passed to <a class="reference internal" href="scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">clonal_expansion()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></span><span class="annotation full"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A DataFrame with one row for each unique value in <code class="docutils literal notranslate"><span class="pre">groupby</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scirpy.tl.alpha_diversity.html" class="btn btn-neutral float-right" title="scirpy.tl.alpha_diversity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scirpy.tl.clonal_expansion.html" class="btn btn-neutral float-left" title="scirpy.tl.clonal_expansion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

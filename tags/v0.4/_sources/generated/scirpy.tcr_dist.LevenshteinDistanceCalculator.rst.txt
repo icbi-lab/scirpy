@@ -1,0 +1,32 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L294-L331
+
+scirpy.tcr\_dist.LevenshteinDistanceCalculator
+==============================================
+
+.. currentmodule:: scirpy.tcr_dist
+
+.. add toctree option to make autodoc generate the pages
+
+.. autoclass:: LevenshteinDistanceCalculator
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.tcr_dist.LevenshteinDistanceCalculator.DTYPE
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.tcr_dist.LevenshteinDistanceCalculator.calc_dist_mat
+   
+   

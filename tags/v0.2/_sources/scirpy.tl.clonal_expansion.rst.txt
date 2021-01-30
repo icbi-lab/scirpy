@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonal_expansion.py#L51-L96
+
+scirpy.tl.clonal\_expansion
+===========================
+
+.. currentmodule:: scirpy.tl
+
+.. autofunction:: clonal_expansion

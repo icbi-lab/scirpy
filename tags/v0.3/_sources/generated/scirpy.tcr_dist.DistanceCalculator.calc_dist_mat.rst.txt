@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L84-L101
+
+scirpy.tcr\_dist.DistanceCalculator.calc\_dist\_mat
+===================================================
+
+.. currentmodule:: scirpy.tcr_dist
+
+.. automethod:: DistanceCalculator.calc_dist_mat

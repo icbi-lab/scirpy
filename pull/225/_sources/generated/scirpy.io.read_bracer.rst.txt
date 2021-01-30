@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_io.py#L367-L445
+
+scirpy.io.read\_bracer
+======================
+
+.. currentmodule:: scirpy.io
+
+.. autofunction:: read_bracer

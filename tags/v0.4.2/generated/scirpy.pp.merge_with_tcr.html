@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>scirpy.pp.merge_with_tcr &mdash; scirpy  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/typehints.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scirpy.pp.tcr_neighbors" href="scirpy.pp.tcr_neighbors.html" />
+    <link rel="prev" title="scirpy.io.read_h5ad" href="scirpy.io.read_h5ad.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#input-output-io">Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.pp.merge_with_tcr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.pp.tcr_neighbors.html">scirpy.pp.tcr_neighbors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tcr-biology.html">T-cell receptor model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>scirpy.pp.merge_with_tcr</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_preprocessing/_merge_adata.py#L6-L63" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scirpy-pp-merge-with-tcr">
+<h1>scirpy.pp.merge_with_tcr<a class="headerlink" href="#scirpy-pp-merge-with-tcr" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="scirpy.pp.merge_with_tcr">
+<code class="sig-prename descclassname">scirpy.pp.</code><code class="sig-name descname">merge_with_tcr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="n">adata_tcr</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">how</span><span class="o">=</span><span class="default_value">'left'</span></em>, <em class="sig-param"><span class="n">on</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">left_index</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">right_index</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">validate</span><span class="o">=</span><span class="default_value">'one_to_one'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pp.merge_with_tcr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge TCR data with transcriptomics data into a single <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a>
+object.</p>
+<p><a class="reference internal" href="../tutorials/tutorial_io.html#importing-data"><span class="std std-ref">Reading in TCR data</span></a> results in an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a>
+object with TCR information stored in <code class="docutils literal notranslate"><span class="pre">obs</span></code>. Use this function to merge
+it with another <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> which contains transcriptomics data.</p>
+<p>Will keep all objects (e.g. <code class="docutils literal notranslate"><span class="pre">neighbors</span></code>, <code class="docutils literal notranslate"><span class="pre">umap</span></code>) from <code class="docutils literal notranslate"><span class="pre">adata</span></code> and integrate
+<code class="docutils literal notranslate"><span class="pre">obs</span></code> from <code class="docutils literal notranslate"><span class="pre">adata_tcr</span></code> into <code class="docutils literal notranslate"><span class="pre">adata</span></code>.
+Everything other than <code class="docutils literal notranslate"><span class="pre">.obs</span></code> from <code class="docutils literal notranslate"><span class="pre">adata_tcr</span></code> will be discarded.</p>
+<p>This function uses <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html#pandas.merge" title="(in pandas v1.1.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.merge()</span></code></a> to join the two <code class="docutils literal notranslate"><span class="pre">.obs</span></code> data frames.</p>
+<p>Modifies <code class="docutils literal notranslate"><span class="pre">adata</span></code> inplace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>AnnData with the transcriptomics data. Will be modified inplace.</p>
+</dd>
+<dt><strong>adata_tcr</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>AnnData with the TCR data</p>
+</dd>
+<dt><strong>on</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Columns to join on. Default: The index and “batch”, if it exists in both <code class="docutils literal notranslate"><span class="pre">obs</span></code>.</p>
+</dd>
+<dt><strong>left_index</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html#pandas.merge" title="(in pandas v1.1.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.merge()</span></code></a>.</p>
+</dd>
+<dt><strong>right_index</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html#pandas.merge" title="(in pandas v1.1.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.merge()</span></code></a>.</p>
+</dd>
+<dt><strong>validate</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'one_to_one'</span></code>)</dt><dd><p>See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html#pandas.merge" title="(in pandas v1.1.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.merge()</span></code></a>.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Additional kwargs are passed to <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html#pandas.merge" title="(in pandas v1.1.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.merge()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><code class="docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scirpy.pp.tcr_neighbors.html" class="btn btn-neutral float-right" title="scirpy.pp.tcr_neighbors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scirpy.io.read_h5ad.html" class="btn btn-neutral float-left" title="scirpy.io.read_h5ad" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

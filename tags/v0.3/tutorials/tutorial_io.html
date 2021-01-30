@@ -1,0 +1,1262 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Loading TCR data with scirpy &mdash; scirpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/typehints.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scirpy.io.read_10x_vdj" href="../generated/scirpy.io.read_10x_vdj.html" />
+    <link rel="prev" title="Analysis of 3k T cells from cancer" href="tutorial_3k_tcr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_3k_tcr.html">Analysis of 3k T cells from cancer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Loading TCR data with scirpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools">Loading data from <em>10x Genomics CellRanger</em>, <em>TraCeR</em> or AIRR-compliant tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.read_10x_vdj.html">scirpy.io.read_10x_vdj</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.read_tracer.html">scirpy.io.read_tracer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.read_airr.html">scirpy.io.read_airr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Read-10x-data">Read 10x data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Read-Smart-seq2-data-processed-with-TraCeR">Read Smart-seq2 data processed with TraCeR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Read-an-AIRR-compliant-rearrangement-table">Read an AIRR-compliant rearrangement table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-AnnData-objects-from-other-formats">Creating AnnData objects from other formats</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.TcrCell.html">scirpy.io.TcrCell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.TcrChain.html">scirpy.io.TcrChain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.from_tcr_objs.html">scirpy.io.from_tcr_objs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Combining-multiple-samples">Combining multiple samples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tcr-biology.html">T-cell receptor model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Loading TCR data with scirpy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/tutorials/tutorial_io.md" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;../..&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">tarfile</span>
+<span class="kn">import</span> <span class="nn">anndata</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">NumbaPerformanceWarning</span>
+
+<span class="c1"># ignore numba performance warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">NumbaPerformanceWarning</span><span class="p">)</span>
+
+<span class="c1"># suppress &quot;storing XXX as categorical&quot; warnings.</span>
+<span class="n">anndata</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">anndata_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Loading-TCR-data-with-scirpy">
+<span id="importing-data"></span><h1>Loading TCR data with scirpy<a class="headerlink" href="#Loading-TCR-data-with-scirpy" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we demonstrate how single-cell <a class="reference internal" href="../glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> data can be imported into
+an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object for the use with Scirpy. To learn more about
+AnnData and how Scirpy makes use of it, check out the <a class="reference internal" href="../usage-principles.html#data-structure"><span class="std std-ref">Data structure</span></a> section.</p>
+<p>The example data used in this notebook are available from the
+<a class="reference external" href="https://github.com/icbi-lab/scirpy/tree/master/docs/tutorials/example_data">Scirpy repository</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Limitations of the scirpy data model</strong></p>
+<p>Currently, reading data into <em>Scirpy</em> has the following limitations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Only alpha- and beta <a class="reference internal" href="../glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains are supported. Other chains are ignored.</p></li>
+<li><p>Non-productive chains are removed. <em>CellRanger</em>, <em>TraCeR</em>, and the <em>AIRR rearrangment format</em>
+flag these cells appropriately. When reading <a class="reference internal" href="#importing-custom-formats"><span class="std std-ref">custom formats</span></a>,
+you need to pass the flag explicitly or filter the chains beforehand.</p></li>
+<li><p>Each chain can contain up to two alpha and two beta chains (<a class="reference internal" href="../glossary.html#term-Dual-TCR"><span class="xref std std-term">Dual TCR</span></a>).
+Excess chains are removed (those with lowest read count/<a class="reference internal" href="../glossary.html#term-UMI"><span class="xref std std-term">UMI</span></a> count)
+and cells flagged as <a class="reference internal" href="../glossary.html#term-Multichain-cell"><span class="xref std std-term">Multichain-cell</span></a>.</p></li>
+</ul>
+</div></blockquote>
+<p>For more information, see <a class="reference internal" href="../tcr-biology.html#tcr-model"><span class="std std-ref">T-cell receptor model</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>TCR quality control</strong></p>
+<ul class="simple">
+<li><p>After importing the data, we recommend running the <a class="reference internal" href="../generated/scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.chain_pairing()</span></code></a> function.
+It will flag cells with <a class="reference internal" href="../glossary.html#term-Orphan-chain"><span class="xref std std-term">orphan chains</span></a> (i.e. cells with only a single detected cell)
+and <a class="reference internal" href="../glossary.html#term-Multichain-cell"><span class="xref std std-term">multichain-cells</span></a> (i.e. cells with more than two full pairs of alpha- and beta chains).</p></li>
+<li><p>We recommend excluding multichain-cells as these likely represent doublets</p></li>
+<li><p>Based on the <em>orphan chain</em> flags, the corresponding cells can be excluded. Alternatively,
+these cells can be matched to clonotypes on a single chain only, by using the <code class="docutils literal notranslate"><span class="pre">receptor_arms=&quot;any&quot;</span></code>
+parameter when running <a class="reference internal" href="../generated/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools">
+<h2>Loading data from <em>10x Genomics CellRanger</em>, <em>TraCeR</em> or AIRR-compliant tools<a class="headerlink" href="#Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools" title="Permalink to this headline">¶</a></h2>
+<p>We provide convenience functions to load data from <em>CellRanger</em> or <em>TraCeR</em> with a single function call,
+supporting both data generated on the <em>10x</em> and <em>Smart-seq2</em> sequencing platforms, respectively.
+Moreover, we support importing data in the community-standard
+<a class="reference external" href="https://docs.airr-community.org/en/latest/datarep/rearrangements.html">AIRR rearrangement schema</a>.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../generated/scirpy.io.read_10x_vdj.html#scirpy.io.read_10x_vdj" title="scirpy.io.read_10x_vdj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_10x_vdj</span></code></a>(path[, filtered])</p></td>
+<td><p>Read TCR data from 10x Genomics cell-ranger output.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../generated/scirpy.io.read_tracer.html#scirpy.io.read_tracer" title="scirpy.io.read_tracer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_tracer</span></code></a>(path)</p></td>
+<td><p>Read data from <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (<a class="bibtex reference internal" href="../zzz_bibliography.html#stubbington2016-kh" id="id1">[SLonnbergP+16]</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../generated/scirpy.io.read_airr.html#scirpy.io.read_airr" title="scirpy.io.read_airr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_airr</span></code></a>(path)</p></td>
+<td><p>Read AIRR-compliant data.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="Read-10x-data">
+<h3>Read 10x data<a class="headerlink" href="#Read-10x-data" title="Permalink to this headline">¶</a></h3>
+<p>With <a class="reference internal" href="../generated/scirpy.io.read_10x_vdj.html#scirpy.io.read_10x_vdj" title="scirpy.io.read_10x_vdj"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_10x_vdj()</span></code></a> we can load <code class="docutils literal notranslate"><span class="pre">filtered_contig_annotations.csv</span></code> or <code class="docutils literal notranslate"><span class="pre">contig_annotations.json</span></code> files as they are produced by <em>CellRanger</em>.
+Here, we demonstrate how to load paired single cell transcriptomics and TCR sequencing data from COVID19 patients
+from <a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE145926">GSE145926</a> (<a class="bibtex reference internal" href="../zzz_bibliography.html#liao2020" id="id2">[LLY+20]</a>).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Load the TCR data</span>
+<span class="n">adata_tcr</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_10x_vdj</span><span class="p">(</span>
+    <span class="s2">&quot;example_data/liao-2019-covid19/GSM4385993_C144_filtered_contig_annotations.csv.gz&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Load the associated transcriptomics data</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_10x_h5</span><span class="p">(</span>
+    <span class="s2">&quot;example_data/liao-2019-covid19/GSM4339772_C144_filtered_feature_bc_matrix.h5&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>This particular sample only has a detected TCR for a small fraction of the cells:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">adata_tcr</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(136, 0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">adata</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(3716, 33539)
+</pre></div></div>
+</div>
+<p>Next, we integrate both the TCR and the transcriptomics data into a single <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">anndata.AnnData</span></code></a> object
+using <a class="reference internal" href="../generated/scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.merge_with_tcr()</span></code></a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">merge_with_tcr</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">adata_tcr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now, we can use TCR-related variables together with the gene expression data. Here, we visualize the cells with a detected TCR on the UMAP plot. It is reassuring that the TCRs coincide with the T-cell marker gene CD3.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">svd_solver</span><span class="o">=</span><span class="s2">&quot;arpack&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;has_tcr&quot;</span><span class="p">,</span> <span class="s2">&quot;CD3E&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_io_9_0.svg" src="../_images/tutorials_tutorial_io_9_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Read-Smart-seq2-data-processed-with-TraCeR">
+<h3>Read Smart-seq2 data processed with TraCeR<a class="headerlink" href="#Read-Smart-seq2-data-processed-with-TraCeR" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (<a class="bibtex reference internal" href="../zzz_bibliography.html#stubbington2016-kh" id="id3">[SLonnbergP+16]</a>) is a method commonly used
+to extract TCR sequences from data generated with Smart-seq2 or other full-length single-cell sequencing protocols.
+<a class="reference external" href="https://nf-co.re/">Nf-core</a> provides a full <a class="reference external" href="https://github.com/nf-core/smartseq2/">pipeline for processing Smart-seq2 sequencing data</a>.</p>
+<p>The <a class="reference internal" href="../generated/scirpy.io.read_tracer.html#scirpy.io.read_tracer" title="scirpy.io.read_tracer"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.io.read_tracer()</span></code></a> function obtains its TCR information from the <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> file
+in the <code class="docutils literal notranslate"><span class="pre">filtered_TCR_seqs</span></code> folder TraCeR generates for each cell.</p>
+<p>For this example, we load the ~500 cells from triple-negative breast cancer patients from
+<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE75688">GSE75688</a> (<a class="bibtex reference internal" href="../zzz_bibliography.html#chung2017" id="id4">[CEL+17]</a>).
+The raw data has been processed using the aforementioned <a class="reference external" href="https://github.com/nf-core/smartseq2/">Smart-seq2 pipeline</a> from nf-core.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># extract data</span>
+<span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;example_data/chung-park-2017.tar.bz2&quot;</span><span class="p">,</span> <span class="s2">&quot;r:bz2&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tar</span><span class="p">:</span>
+    <span class="n">tar</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s2">&quot;example_data/chung-park-2017&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Load transcriptomics data from count matrix</span>
+<span class="n">expr_chung</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;example_data/chung-park-2017/counts.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># anndata needs genes in columns and samples in rows</span>
+<span class="n">expr_chung</span> <span class="o">=</span> <span class="n">expr_chung</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Geneid&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span><span class="n">expr_chung</span><span class="p">)</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(563, 23438)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Load TCR data and merge it with transcriptomics data</span>
+<span class="n">adata_tcr</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_tracer</span><span class="p">(</span><span class="s2">&quot;example_data/chung-park-2017/tracer/&quot;</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">merge_with_tcr</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">adata_tcr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">highly_variable_genes</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">flavor</span><span class="o">=</span><span class="s2">&quot;cell_ranger&quot;</span><span class="p">,</span> <span class="n">n_top_genes</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">svd_solver</span><span class="o">=</span><span class="s2">&quot;arpack&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;has_tcr&quot;</span><span class="p">,</span> <span class="s2">&quot;CD3E&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_io_14_0.svg" src="../_images/tutorials_tutorial_io_14_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Read-an-AIRR-compliant-rearrangement-table">
+<h3>Read an AIRR-compliant rearrangement table<a class="headerlink" href="#Read-an-AIRR-compliant-rearrangement-table" title="Permalink to this headline">¶</a></h3>
+<p>We generated example data using <a class="reference external" href="https://immunesim.readthedocs.io/en/latest/">immuneSIM</a> (<a class="bibtex reference internal" href="../zzz_bibliography.html#weber2020" id="id5">[WAY+20]</a>).
+The data consists of 100 cells and does not include transcriptomics data.</p>
+<p>The rearrangement tables are often organized into separate tables per chain. Therefore, <a class="reference internal" href="../generated/scirpy.io.read_airr.html#scirpy.io.read_airr" title="scirpy.io.read_airr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.io.read_airr()</span></code></a> supports
+specifiying multiple <code class="docutils literal notranslate"><span class="pre">tsv</span></code> files at once. This would have the same effect as concatenating them before
+the import.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">adata</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_airr</span><span class="p">([</span><span class="s2">&quot;example_data/immunesim_airr/immunesim_tra.tsv&quot;</span><span class="p">,</span> <span class="s2">&quot;example_data/immunesim_airr/immunesim_trb.tsv&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>The dataset does not come with transcriptomics data. We can, therefore, not
+show the UMAP plot highlighting cells with TCRs, but we can still use scirpy
+to analyse it. Below, we visualize the clonotype network
+connecting cells with similar <a class="reference internal" href="../glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequences.</p>
+<p><strong>Note:</strong> The cutoff of 25 was chosen for demonstration purposes on this small sample dataset. Usually a smaller cutoff
+is more approriate.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">tcr_neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">receptor_arms</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">dual_tcr</span><span class="o">=</span><span class="s2">&quot;primary_only&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 100/100 [00:00&lt;00:00, 1270.43it/s]
+100%|██████████| 100/100 [00:00&lt;00:00, 1349.25it/s]
+100%|██████████| 142/142 [00:00&lt;00:00, 81520.83it/s]
+100%|██████████| 147/147 [00:00&lt;00:00, 79016.11it/s]
+100%|██████████| 278/278 [00:00&lt;00:00, 93020.86it/s]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">define_clonotype_clusters</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;fr&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;ct_cluster_aa_alignment&quot;</span><span class="p">,</span> <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc2428cf510&gt;],
+      dtype=object)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_io_19_1.svg" src="../_images/tutorials_tutorial_io_19_1.svg" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="Creating-AnnData-objects-from-other-formats">
+<span id="importing-custom-formats"></span><h2>Creating AnnData objects from other formats<a class="headerlink" href="#Creating-AnnData-objects-from-other-formats" title="Permalink to this headline">¶</a></h2>
+<p>Often, TCR data are just provided as a simple table listing the <a class="reference internal" href="../glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequences for each cell.
+We provide a generic data structure for cells with TCRs, which can then be converted into
+an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../generated/scirpy.io.TcrCell.html#scirpy.io.TcrCell" title="scirpy.io.TcrCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TcrCell</span></code></a>(cell_id)</p></td>
+<td><p>Data structure for a Cell with T-cell receptors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../generated/scirpy.io.TcrChain.html#scirpy.io.TcrChain" title="scirpy.io.TcrChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TcrChain</span></code></a>(chain_type, *[, cdr3, cdr3_nt, …])</p></td>
+<td><p>Data structure for a T cell receptor chain.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../generated/scirpy.io.from_tcr_objs.html#scirpy.io.from_tcr_objs" title="scirpy.io.from_tcr_objs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_tcr_objs</span></code></a>(tcr_objs)</p></td>
+<td><p>Convert a collection of <a class="reference internal" href="../generated/scirpy.io.TcrCell.html#scirpy.io.TcrCell" title="scirpy.io.TcrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">TcrCell</span></code></a> objects to an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If you believe you are working with a commonly used format, consider sending a <a class="reference external" href="https://github.com/icbi-lab/scirpy/issues">feature request</a>
+for a <code class="docutils literal notranslate"><span class="pre">read_XXX</span></code> function.</p>
+<p>For this example, we again load the triple-negative breast cancer data from <a class="bibtex reference internal" href="../zzz_bibliography.html#chung2017" id="id6">[CEL+17]</a>. However, this
+time, we retrieve the TCR data from a separate summary table containing the TCR information
+(we generated this table for the sake of the example, but it could as well
+be a supplementary file from the paper).</p>
+<p>Such a table typically contains information about</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>CDR3 sequences (amino acid and/or nucleotide)</p></li>
+<li><p>expression of the receptor chain (e.g. count, <a class="reference internal" href="../glossary.html#term-UMI"><span class="xref std std-term">UMI</span></a>, transcripts per million (TPM))</p></li>
+<li><p>the <a class="reference internal" href="../glossary.html#term-V-D-J"><span class="xref std std-term">V(D)J</span></a> genes for each chain</p></li>
+<li><p>information if the chain is <a class="reference internal" href="../glossary.html#term-productive-chain"><span class="xref std std-term">productive</span></a>.</p></li>
+</ul>
+</div></blockquote>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tcr_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;example_data/chung-park-2017/tcr_table.tsv&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">],</span>
+    <span class="n">true_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;True&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">tcr_table</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cell_id</th>
+      <th>cdr3_alpha</th>
+      <th>cdr3_nt_alpha</th>
+      <th>count_alpha</th>
+      <th>v_alpha</th>
+      <th>j_alpha</th>
+      <th>cdr3_beta</th>
+      <th>cdr3_nt_beta</th>
+      <th>count_beta</th>
+      <th>v_beta</th>
+      <th>d_beta</th>
+      <th>j_beta</th>
+      <th>productive_alpha</th>
+      <th>productive_beta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SRR2973278</td>
+      <td>AVSDIHASGGSYIPT</td>
+      <td>GCTGTTTCGGATATTCATGCATCAGGAGGAAGCTACATACCTACA</td>
+      <td>9.29463</td>
+      <td>TRAV21</td>
+      <td>TRAJ6</td>
+      <td>ASSWWQNTEAF</td>
+      <td>GCCAGCAGCTGGTGGCAGAACACTGAAGCTTTC</td>
+      <td>37.5984</td>
+      <td>TRBV5-1</td>
+      <td>NaN</td>
+      <td>TRBJ1-1</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SRR2973305</td>
+      <td>AVVTGANSKLT</td>
+      <td>GCTGTGGTAACTGGAGCCAATAGTAAGCTGACA</td>
+      <td>89.45740</td>
+      <td>TRAV22</td>
+      <td>TRAJ56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SRR2973371</td>
+      <td>ALKRTGNTPLV</td>
+      <td>GCTCTGAAAAGAACAGGAAACACACCTCTTGTC</td>
+      <td>431.96500</td>
+      <td>TRAV9-2</td>
+      <td>TRAJ29</td>
+      <td>ASRSRDSGEPQH</td>
+      <td>GCCAGCAGGAGCAGGGACAGCGGAGAGCCCCAGCAT</td>
+      <td>952.0230</td>
+      <td>TRBV10-2</td>
+      <td>TRBD1</td>
+      <td>TRBJ1-5</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SRR2973377</td>
+      <td>ATDPETSGSRLT</td>
+      <td>GCTACGGACCCAGAAACCAGTGGCTCTAGGTTGACC</td>
+      <td>772.43600</td>
+      <td>TRAV17</td>
+      <td>TRAJ58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SRR2973403</td>
+      <td>AVRGATDSWGKFQ</td>
+      <td>GCTGTGAGAGGAGCAACTGACAGCTGGGGGAAATTCCAG</td>
+      <td>95.63640</td>
+      <td>TRAV3</td>
+      <td>TRAJ24</td>
+      <td>SVQTSEYEQY</td>
+      <td>AGCGTCCAGACTAGCGAGTACGAGCAGTAC</td>
+      <td>205.8330</td>
+      <td>TRBV29-1</td>
+      <td>TRBD2</td>
+      <td>TRBJ2-7</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>SRR5023618</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ASSDSPFSSYNEQF</td>
+      <td>GCCAGCAGTGACTCGCCCTTTAGCTCCTACAATGAGCAGTTC</td>
+      <td>864.4550</td>
+      <td>TRBV6-4</td>
+      <td>NaN</td>
+      <td>TRBJ2-1</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>SRR5023621</td>
+      <td>AENSGGSNYKLT</td>
+      <td>GCAGAGAATAGTGGAGGTAGCAACTATAAACTGACA</td>
+      <td>512.63000</td>
+      <td>TRAV13-2</td>
+      <td>TRAJ53</td>
+      <td>ASSPDGGGGYT</td>
+      <td>GCCAGCAGCCCTGATGGGGGAGGGGGCTACACC</td>
+      <td>805.2010</td>
+      <td>TRBV7-3</td>
+      <td>TRBD2</td>
+      <td>TRBJ1-2</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>SRR5023626</td>
+      <td>ALRIGSNYKLT</td>
+      <td>GCTCTGAGAATCGGTAGCAACTATAAACTGACA</td>
+      <td>12.51630</td>
+      <td>TRAV9-2</td>
+      <td>TRAJ53</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>SRR5023633</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ASGLGQSVGGTQY</td>
+      <td>GCTAGTGGCCTAGGGCAGTCGGTAGGAGGGACCCAGTAC</td>
+      <td>18.4273</td>
+      <td>TRBV12-5</td>
+      <td>TRBD2</td>
+      <td>TRBJ2-5</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>SRR5023639</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ASSKGSLGPAGELF</td>
+      <td>GCCAGCAGCAAAGGATCGCTGGGGCCCGCCGGGGAGCTGTTT</td>
+      <td>905.9260</td>
+      <td>TRBV21-1</td>
+      <td>TRBD1</td>
+      <td>TRBJ2-2</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>90 rows × 14 columns</p>
+</div></div>
+</div>
+<p>Our task is now to dissect the table into <a class="reference internal" href="../generated/scirpy.io.TcrCell.html#scirpy.io.TcrCell" title="scirpy.io.TcrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">TcrCell</span></code></a> and <a class="reference internal" href="../generated/scirpy.io.TcrChain.html#scirpy.io.TcrChain" title="scirpy.io.TcrChain"><code class="xref py py-class docutils literal notranslate"><span class="pre">TcrChain</span></code></a> objects.
+Each <a class="reference internal" href="../generated/scirpy.io.TcrCell.html#scirpy.io.TcrCell" title="scirpy.io.TcrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">TcrCell</span></code></a> can have an arbitrary number of chains.
+When converting the <a class="reference internal" href="../generated/scirpy.io.TcrCell.html#scirpy.io.TcrCell" title="scirpy.io.TcrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">TcrCell</span></code></a> objects into an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object,
+scirpy will only retain at most two alpha and two beta chains per cell and flag cells which exceed
+this number as <a class="reference internal" href="../glossary.html#term-Multichain-cell"><span class="xref std std-term">multichain cells</span></a>. For more information, check the page about our <a class="reference internal" href="../tcr-biology.html#tcr-model"><span class="std std-ref">T-cell receptor model</span></a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">tcr_cells</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tcr_table</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">TcrCell</span><span class="p">(</span><span class="n">cell_id</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;cell_id&quot;</span><span class="p">])</span>
+    <span class="n">alpha_chain</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">TcrChain</span><span class="p">(</span>
+        <span class="n">chain_type</span><span class="o">=</span><span class="s2">&quot;TRA&quot;</span><span class="p">,</span>
+        <span class="n">cdr3</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;cdr3_alpha&quot;</span><span class="p">],</span>
+        <span class="n">cdr3_nt</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;cdr3_nt_alpha&quot;</span><span class="p">],</span>
+        <span class="n">expr</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;count_alpha&quot;</span><span class="p">],</span>
+        <span class="n">v_gene</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;v_alpha&quot;</span><span class="p">],</span>
+        <span class="n">j_gene</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;j_alpha&quot;</span><span class="p">],</span>
+        <span class="n">is_productive</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;productive_alpha&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">beta_chain</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">TcrChain</span><span class="p">(</span>
+        <span class="n">chain_type</span><span class="o">=</span><span class="s2">&quot;TRB&quot;</span><span class="p">,</span>
+        <span class="n">cdr3</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;cdr3_beta&quot;</span><span class="p">],</span>
+        <span class="n">cdr3_nt</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;cdr3_nt_beta&quot;</span><span class="p">],</span>
+        <span class="n">expr</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;count_beta&quot;</span><span class="p">],</span>
+        <span class="n">v_gene</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;v_beta&quot;</span><span class="p">],</span>
+        <span class="n">d_gene</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;d_beta&quot;</span><span class="p">],</span>
+        <span class="n">j_gene</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;j_beta&quot;</span><span class="p">],</span>
+        <span class="n">is_productive</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;productive_beta&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">cell</span><span class="o">.</span><span class="n">add_chain</span><span class="p">(</span><span class="n">alpha_chain</span><span class="p">)</span>
+    <span class="n">cell</span><span class="o">.</span><span class="n">add_chain</span><span class="p">(</span><span class="n">beta_chain</span><span class="p">)</span>
+    <span class="n">tcr_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now, we can convert the list of <a class="reference internal" href="../generated/scirpy.io.TcrCell.html#scirpy.io.TcrCell" title="scirpy.io.TcrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">TcrCell</span></code></a> objects using <a class="reference internal" href="../generated/scirpy.io.from_tcr_objs.html#scirpy.io.from_tcr_objs" title="scirpy.io.from_tcr_objs"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.io.from_tcr_objs()</span></code></a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">adata_tcr</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">from_tcr_objs</span><span class="p">(</span><span class="n">tcr_cells</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># We can re-use the transcriptomics data from above...</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span><span class="n">expr_chung</span><span class="p">)</span>
+<span class="c1"># ... and merge it with the TCR data</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">merge_with_tcr</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">adata_tcr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">highly_variable_genes</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">flavor</span><span class="o">=</span><span class="s2">&quot;cell_ranger&quot;</span><span class="p">,</span> <span class="n">n_top_genes</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">svd_solver</span><span class="o">=</span><span class="s2">&quot;arpack&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;has_tcr&quot;</span><span class="p">,</span> <span class="s2">&quot;CD3E&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_io_27_0.svg" src="../_images/tutorials_tutorial_io_27_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Combining-multiple-samples">
+<h2>Combining multiple samples<a class="headerlink" href="#Combining-multiple-samples" title="Permalink to this headline">¶</a></h2>
+<p>It is quite common that the sequncing data is split up in multiple samples.
+To combine them into a single object, we load each sample independently using one of the approaches described
+in this document. Then, we combine them using <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.concatenate.html#anndata.AnnData.concatenate" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">anndata.AnnData.concatenate()</span></code></a>.</p>
+<p>Here is a full example loading and combining three samples from the COVID19 study by <a class="bibtex reference internal" href="../zzz_bibliography.html#liao2020" id="id7">[LLY+20]</a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># define sample metadata. Usually read from a file.</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;C144&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;mild&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;C146&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;severe&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;C149&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;healthy control&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a list of AnnData objects (one for each sample)</span>
+<span class="n">adatas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">sample</span><span class="p">,</span> <span class="n">sample_meta</span> <span class="ow">in</span> <span class="n">samples</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">gex_file</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;example_data/liao-2019-covid19/*</span><span class="si">{</span><span class="n">sample</span><span class="si">}</span><span class="s2">*.h5&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">tcr_file</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;example_data/liao-2019-covid19/*</span><span class="si">{</span><span class="n">sample</span><span class="si">}</span><span class="s2">*.csv.gz&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_10x_h5</span><span class="p">(</span><span class="n">gex_file</span><span class="p">)</span>
+    <span class="n">adata_tcr</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_10x_vdj</span><span class="p">(</span><span class="n">tcr_file</span><span class="p">)</span>
+    <span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">merge_with_tcr</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">adata_tcr</span><span class="p">)</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_meta</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span>
+    <span class="c1"># concatenation only works with unique gene names</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">var_names_make_unique</span><span class="p">()</span>
+    <span class="n">adatas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Merge anndata objects</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adatas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">adatas</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<p>The data is now integrated in a single object. Again, the detected TCRs coincide with <code class="docutils literal notranslate"><span class="pre">CD3E</span></code> gene expression. We clearly observe batch effects between the samples – for a meaningful downstream analysis further processing steps such as highly-variable gene filtering and batch correction are necessary.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">svd_solver</span><span class="o">=</span><span class="s2">&quot;arpack&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;has_tcr&quot;</span><span class="p">,</span> <span class="s2">&quot;CD3E&quot;</span><span class="p">,</span> <span class="s2">&quot;sample&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_io_33_0.svg" src="../_images/tutorials_tutorial_io_33_0.svg" /></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../generated/scirpy.io.read_10x_vdj.html" class="btn btn-neutral float-right" title="scirpy.io.read_10x_vdj" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_3k_tcr.html" class="btn btn-neutral float-left" title="Analysis of 3k T cells from cancer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

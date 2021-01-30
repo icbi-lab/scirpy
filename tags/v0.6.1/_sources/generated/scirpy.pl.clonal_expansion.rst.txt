@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/_clonal_expansion.py#L8-L73
+
+scirpy.pl.clonal\_expansion
+===========================
+
+.. currentmodule:: scirpy.pl
+
+.. autofunction:: clonal_expansion

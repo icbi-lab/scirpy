@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_io.py#L411-L478
+
+scirpy.io.read\_airr
+====================
+
+.. currentmodule:: scirpy.io
+
+.. autofunction:: read_airr

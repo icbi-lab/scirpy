@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/_clonotype_imbalance.py#L12-L167
+
+scirpy.pl.clonotype\_imbalance
+==============================
+
+.. currentmodule:: scirpy.pl
+
+.. autofunction:: clonotype_imbalance

@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/ir_dist/__init__.py#L215-L241
+
+scirpy.ir\_dist.HammingDistanceCalculator.calc\_dist\_mat
+=========================================================
+
+.. currentmodule:: scirpy.ir_dist
+
+.. automethod:: HammingDistanceCalculator.calc_dist_mat

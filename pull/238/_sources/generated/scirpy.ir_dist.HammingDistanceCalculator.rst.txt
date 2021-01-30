@@ -1,0 +1,32 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/ir_dist/__init__.py#L345-L396
+
+scirpy.ir\_dist.HammingDistanceCalculator
+=========================================
+
+.. currentmodule:: scirpy.ir_dist
+
+.. add toctree option to make autodoc generate the pages
+
+.. autoclass:: HammingDistanceCalculator
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.ir_dist.HammingDistanceCalculator.DTYPE
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.ir_dist.HammingDistanceCalculator.calc_dist_mat
+   
+   

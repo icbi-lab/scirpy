@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/_io/h5ad.py#L341-L429
+
+scirpy.read\_h5ad
+=================
+
+.. currentmodule:: scirpy
+
+.. autofunction:: read_h5ad

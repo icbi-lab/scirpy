@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_io/_io.py#L245-L277
+
+scirpy.read\_10x\_vdj
+=====================
+
+.. currentmodule:: scirpy
+
+.. autofunction:: read_10x_vdj

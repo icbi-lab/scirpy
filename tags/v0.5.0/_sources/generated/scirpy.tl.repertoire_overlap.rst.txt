@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_repertoire_overlap.py#L10-L102
+
+scirpy.tl.repertoire\_overlap
+=============================
+
+.. currentmodule:: scirpy.tl
+
+.. autofunction:: repertoire_overlap

@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_preprocessing/_merge_adata.py#L58-L162
+
+scirpy.pp.merge\_with\_ir
+=========================
+
+.. currentmodule:: scirpy.pp
+
+.. autofunction:: merge_with_ir

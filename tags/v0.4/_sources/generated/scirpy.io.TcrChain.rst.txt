@@ -1,0 +1,24 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_datastructures.py#L11-L74
+
+scirpy.io.TcrChain
+==================
+
+.. currentmodule:: scirpy.io
+
+.. add toctree option to make autodoc generate the pages
+
+.. autoclass:: TcrChain
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: .
+   
+   
+   

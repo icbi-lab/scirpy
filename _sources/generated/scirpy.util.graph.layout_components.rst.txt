@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/util/graph.py#L45-L101
+
+scirpy.util.graph.layout\_components
+====================================
+
+.. currentmodule:: scirpy.util.graph
+
+.. autofunction:: layout_components

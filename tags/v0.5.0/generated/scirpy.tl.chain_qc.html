@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>scirpy.tl.chain_qc &mdash; scirpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/typehints.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scirpy.tl.define_clonotypes" href="scirpy.tl.define_clonotypes.html" />
+    <link rel="prev" title="scirpy.tl.group_abundance" href="scirpy.tl.group_abundance.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#input-output-io">Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../api.html#generic">Generic</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#quality-control">Quality control</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.tl.chain_qc</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#define-and-visualize-clonotypes">Define and visualize clonotypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#analyse-clonal-diversity">Analyse clonal diversity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api.html#v-d-j-gene-usage">V(D)J gene usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.ir_dist">IR distance metrics: <code class="docutils literal notranslate"><span class="pre">ir_dist</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ir-biology.html">Immune receptor (IR) model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>scirpy.tl.chain_qc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_chain_qc.py#L38-L164" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scirpy-tl-chain-qc">
+<h1>scirpy.tl.chain_qc<a class="headerlink" href="#scirpy-tl-chain-qc" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="scirpy.tl.chain_qc">
+<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">chain_qc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">key_added</span><span class="o">=</span><span class="default_value">'receptor_type', 'receptor_subtype', 'chain_pairing'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.chain_qc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform quality control based on the receptor-chain pairing configuration.</p>
+<p>Categorizes cells into their receptor types and according to their chain pairing
+status. The function adds three columns to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>, two containing a coarse
+and fine annotation of receptor types, a third classifying cells according
+to the number of matched receptor types.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">receptor_type</span></code> can be one of the following</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TCR</span></code> (all cells that contain any combination of TRA/TRB/TRG/TRD chains,
+but no IGH/IGK/IGL chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BCR</span></code> (all cells that contain any combination of IGH/IGK/IGL chains,
+but no TCR chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ambiguous</span></code> (all cells that contain both BCR and TCR chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multichain</span></code> (all cells with more than two VJ or more than two VDJ chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">IR</span></code> (all cells without any detected immune receptor)</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">receptor_subtype</span></code> can be one of the following</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRA+TRB</span></code> (all cells that have only TRA and/or TRB chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRG+TRD</span></code> (all cells that have only TRG and/or TRD chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IGH</span></code> (all cells that have only IGH chains, but no IGL or IGK)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IGH+IGL</span></code> (all cells that have only IGH and IGL chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IGH+IGK</span></code> (all cells that have only IGH and IGK chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multichain</span></code> (all cells with more than two VJ or more than two VDJ chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ambiguous</span></code> (all cells that are none of the above, e.g. TRA+TRD, TRA+IGH or,
+IGH+IGK as the primary and IGH+IGL as the secondary receptor)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">IR</span></code> (all cells without any detected immune receptor)</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">chain_pairing</span></code> can be one of the following</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">single</span> <span class="pre">pair</span></code> (all cells that have exactely one matched VJ and VDJ chain)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">orphan</span> <span class="pre">VJ</span></code> (all cells that have only one VJ chain)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">orphan</span> <span class="pre">VDJ</span></code> (all cells that have only one VDJ chain)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra</span> <span class="pre">VJ</span></code> (all cells that have a matched pair of VJ and VDJ chains plus an
+additional VJ-chain)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra</span> <span class="pre">VDJ</span></code> (analogous)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">two</span> <span class="pre">full</span> <span class="pre">chains</span></code> (all cells that have two matched pairs of VJ and VDJ chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ambiguous</span></code> (all cells that have unmatched chains, i.e. that have been
+classified as an <code class="docutils literal notranslate"><span class="pre">ambiguous</span></code> receptor_subtype)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multichain</span></code> (all cells with more than two VJ or more than two VDJ chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">IR</span></code> (all chains with not immune receptor chains)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>Annotated data matrix</p>
+</dd>
+<dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, adds columns to to adata</p>
+</dd>
+<dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">('receptor_type',</span> <span class="pre">'receptor_subtype',</span> <span class="pre">'chain_pairing')</span></code>)</dt><dd><p>Tuple specifying the column names for the coarse and fine receptor type
+annotation, respectively</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]]</span></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Depending on the value of <code class="docutils literal notranslate"><span class="pre">inplace</span></code> either adds three columns to
+<code class="docutils literal notranslate"><span class="pre">adata.obs</span></code> or returns a tuple with three numpy arrays containing
+the annotations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scirpy.tl.define_clonotypes.html" class="btn btn-neutral float-right" title="scirpy.tl.define_clonotypes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scirpy.tl.group_abundance.html" class="btn btn-neutral float-left" title="scirpy.tl.group_abundance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

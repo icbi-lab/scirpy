@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>T-cell receptor model &mdash; scirpy  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/typehints.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="scirpy.tcr_dist.AlignmentDistanceCalculator.calc_dist_mat" href="generated/scirpy.tcr_dist.AlignmentDistanceCalculator.calc_dist_mat.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">T-cell receptor model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-a-clonotype">What is a clonotype?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dual-tcrs">Dual TCRs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clonotype-definition">Clonotype definition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>T-cell receptor model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/tcr-biology.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="t-cell-receptor-model">
+<span id="tcr-model"></span><h1>T-cell receptor model<a class="headerlink" href="#t-cell-receptor-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-clonotype">
+<h2>What is a clonotype?<a class="headerlink" href="#what-is-a-clonotype" title="Permalink to this headline">¶</a></h2>
+<p>A clonotype designates a collection of T or B cells that descend from a
+common, antecedent cell, and therefore, bear the same adaptive
+immune receptors and recognize the same <a class="reference internal" href="glossary.html#term-Epitope"><span class="xref std std-term">epitopes</span></a>.</p>
+<p>In single-cell RNA-sequencing (scRNA-seq) data, T cells sharing identical
+complementarity-determining regions 3 (<a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a>) nucleotide sequences of both α and β
+<a class="reference internal" href="glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains make up a clonotype. Scirpy provides an option to additionally
+require clonotypes to have the same <a class="reference internal" href="glossary.html#term-V-D-J"><span class="xref std std-term">V-gene</span></a>, enforcing the CDR 1
+and 2 regions to be the same.</p>
+</div>
+<div class="section" id="dual-tcrs">
+<h2>Dual TCRs<a class="headerlink" href="#dual-tcrs" title="Permalink to this headline">¶</a></h2>
+<p>Contrary to what would be expected based on the previously described mechanism of
+allelic exclusion (<a class="bibtex reference internal" href="zzz_bibliography.html#brady2010-gh" id="id1">[BSB10]</a>), scRNA-seq datasets can feature a considerable
+number of cells with more than one TCR α and β pair. Since cells with more than one
+productive CDR3 sequence for each chain did not fit into our understanding of
+T cell biology, most TCR analysis tools ignore these cells (<a class="bibtex reference internal" href="zzz_bibliography.html#fischer2019" id="id2">[FWST19]</a>,
+<a class="bibtex reference internal" href="zzz_bibliography.html#zhang2018-ip" id="id3">[ZYZ+18]</a>), or select the CDR3 sequence with the highest expression level
+(<a class="bibtex reference internal" href="zzz_bibliography.html#afik2017-sg" id="id4">[AYB+17]</a>). While in some cases these double-TCR cells might represent
+artifacts (e.g. doublets of a CD8+ and a CD4+ T cell engaged in an immunological
+synapse), there is an increasing amount of evidence in support of a bone fide
+dual-TCR population (<a class="bibtex reference internal" href="zzz_bibliography.html#schuldt2019" id="id5">[SB19]</a>, <a class="bibtex reference internal" href="zzz_bibliography.html#ji2010-bn" id="id6">[JPG10]</a>).</p>
+<p>Scirpy allows investigating the composition and phenotypes of both single- and dual-TCR
+T cells by leveraging a T cell model similar to the one proposed in
+<a class="bibtex reference internal" href="zzz_bibliography.html#stubbington2016-kh" id="id7">[SLonnbergP+16]</a>, where T cells are allowed to have a primary and a secondary
+pair of α- and β chains. For each cell, the primary pair consists of the α- and β-chain
+with the highest read count. Likewise, the secondary pair is the pair of α/β-chains with
+the second highest expression level. Based on the assumption that each cell has only two
+copies of the underlying chromosome set, if more than two variants of a chain are
+recovered for the same cell, the excess TCR chains are ignored by Scirpy and the
+corresponding cells flagged as <a class="reference internal" href="glossary.html#term-Multichain-cell"><span class="xref std std-term">Multichain-cell</span></a>. This filtering strategy leaves the choice
+of discarding or including multichain cells in downstream analyses.</p>
+</div>
+<div class="section" id="clonotype-definition">
+<h2>Clonotype definition<a class="headerlink" href="#clonotype-definition" title="Permalink to this headline">¶</a></h2>
+<p>Scirpy implements a network-based clonotype definition that enables clustering cells
+into clonotypes based on the following options:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>identical <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> nucleotide sequences;</p></li>
+<li><p>identical CDR3 amino acid sequences;</p></li>
+<li><p>similar CDR3 amino acid sequences based on pairwise sequence alignment.</p></li>
+</ul>
+</div></blockquote>
+<p>The latter approach is inspired by studies showing that similar TCR sequences also
+share epitope targets (<a class="bibtex reference internal" href="zzz_bibliography.html#fischer2019" id="id8">[FWST19]</a>, <a class="bibtex reference internal" href="zzz_bibliography.html#glanville2017-ay" id="id9">[GHN+17]</a>, <a class="bibtex reference internal" href="zzz_bibliography.html#tcrdist" id="id10">[DFGH+17]</a>).
+Based on these approaches, Scirpy constructs a global, epitope-focused cell similarity
+network. While convergence of the nucleotide-based clonotype definition to the amino
+acid based one hints at selection pressure, sequence alignment based networks offer
+the opportunity to identify cells that might recognize the same epitopes.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/scirpy.tcr_dist.AlignmentDistanceCalculator.calc_dist_mat.html" class="btn btn-neutral float-left" title="scirpy.tcr_dist.AlignmentDistanceCalculator.calc_dist_mat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

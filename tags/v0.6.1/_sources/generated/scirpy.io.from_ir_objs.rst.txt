@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_convert_anndata.py#L58-L83
+
+scirpy.io.from\_ir\_objs
+========================
+
+.. currentmodule:: scirpy.io
+
+.. autofunction:: from_ir_objs

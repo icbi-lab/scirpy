@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_group_abundance.py#L66-L110
+
+scirpy.tl.group\_abundance
+==========================
+
+.. currentmodule:: scirpy.tl
+
+.. autofunction:: group_abundance

@@ -1,0 +1,32 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_datastructures.py#L77-L103
+
+scirpy.io.TcrCell
+=================
+
+.. currentmodule:: scirpy.io
+
+.. add toctree option to make autodoc generate the pages
+
+.. autoclass:: TcrCell
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.io.TcrCell.cell_id
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.io.TcrCell.add_chain
+   
+   

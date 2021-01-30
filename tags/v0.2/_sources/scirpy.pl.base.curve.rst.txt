@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/base.py#L146-L259
+
+scirpy.pl.base.curve
+====================
+
+.. currentmodule:: scirpy.pl.base
+
+.. autofunction:: curve

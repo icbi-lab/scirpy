@@ -1,0 +1,33 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_datastructures.py#L12-L116
+
+scirpy.io.IrChain
+=================
+
+.. currentmodule:: scirpy.io
+
+.. add toctree option to make autodoc generate the pages
+
+.. autoclass:: IrChain
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.io.IrChain.VALID_LOCI
+      ~scirpy.io.IrChain.VDJ_LOCI
+      ~scirpy.io.IrChain.VJ_LOCI
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: .
+   
+   
+   

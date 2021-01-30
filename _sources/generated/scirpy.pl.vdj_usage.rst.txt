@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/_vdj_usage.py#L19-L246
+
+scirpy.pl.vdj\_usage
+====================
+
+.. currentmodule:: scirpy.pl
+
+.. autofunction:: vdj_usage

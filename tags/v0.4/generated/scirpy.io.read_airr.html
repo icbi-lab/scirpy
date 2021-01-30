@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>scirpy.io.read_airr &mdash; scirpy  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/typehints.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scirpy.io.TcrCell" href="scirpy.io.TcrCell.html" />
+    <link rel="prev" title="scirpy.io.read_tracer" href="scirpy.io.read_tracer.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_3k_tcr.html">Analysis of 3k T cells from cancer</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../tutorials/tutorial_io.html">Loading TCR data with scirpy</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../tutorials/tutorial_io.html#Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools">Loading data from <em>10x Genomics CellRanger</em>, <em>TraCeR</em> or AIRR-compliant tools</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="scirpy.io.read_10x_vdj.html">scirpy.io.read_10x_vdj</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.io.read_tracer.html">scirpy.io.read_tracer</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.io.read_airr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/tutorial_io.html#Read-10x-data">Read 10x data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/tutorial_io.html#Read-Smart-seq2-data-processed-with-TraCeR">Read Smart-seq2 data processed with TraCeR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/tutorial_io.html#Read-an-AIRR-compliant-rearrangement-table">Read an AIRR-compliant rearrangement table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_io.html#Creating-AnnData-objects-from-other-formats">Creating AnnData objects from other formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_io.html#Combining-multiple-samples">Combining multiple samples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tcr-biology.html">T-cell receptor model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+        
+          <li><a href="../tutorials/tutorial_io.html">Loading TCR data with scirpy</a> &raquo;</li>
+        
+      <li>scirpy.io.read_airr</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_io.py#L411-L478" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scirpy-io-read-airr">
+<h1>scirpy.io.read_airr<a class="headerlink" href="#scirpy-io-read-airr" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="scirpy.io.read_airr">
+<code class="sig-prename descclassname">scirpy.io.</code><code class="sig-name descname">read_airr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.io.read_airr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read AIRR-compliant data.</p>
+<p>Reads data organized in the <a class="reference external" href="https://docs.airr-community.org/en/latest/datarep/rearrangements.html">AIRR rearrangement schema</a>.</p>
+<dl class="simple">
+<dt>The following columns are required:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cell_id</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">productive</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">locus</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consensus_count</span></code></p></li>
+<li><p>at least one of <code class="docutils literal notranslate"><span class="pre">junction_aa</span></code> or <code class="docutils literal notranslate"><span class="pre">junction</span></code>.</p></li>
+</ul>
+</dd>
+<dt>Currently, reading data into <em>Scirpy</em> has the following limitations:</dt><dd><ul class="simple">
+<li><p>only alpha- and beta <a class="reference internal" href="../glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains are supported. Other chains are ignored.</p></li>
+<li><p>non-productive chains are removed</p></li>
+<li><p>Each chain can contain up to two alpha and two beta chains (<a class="reference internal" href="../glossary.html#term-Dual-TCR"><span class="xref std std-term">Dual TCR</span></a>).
+Excess chains are removed (those with lowest read count/<a class="reference internal" href="../glossary.html#term-UMI"><span class="xref std std-term">UMI</span></a> count)
+and cells flagged as <a class="reference internal" href="../glossary.html#term-Multichain-cell"><span class="xref std std-term">Multichain-cell</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>For more information, see <a class="reference internal" href="../tcr-biology.html#tcr-model"><span class="std std-ref">T-cell receptor model</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]]</span></dt><dd><p>Path to the AIRR rearrangement tsv file. If different
+chains are split up into multiple files, these can be specified
+as a List, e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;path/to/tcr_alpha.tsv&quot;,</span> <span class="pre">&quot;path/to/tcr_beta.tsv&quot;]</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>AnnData object with TCR data in <code class="docutils literal notranslate"><span class="pre">obs</span></code> for each cell. For more details see
+<a class="reference internal" href="../usage-principles.html#data-structure"><span class="std std-ref">Data structure</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scirpy.io.TcrCell.html" class="btn btn-neutral float-right" title="scirpy.io.TcrCell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scirpy.io.read_tracer.html" class="btn btn-neutral float-left" title="scirpy.io.read_tracer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

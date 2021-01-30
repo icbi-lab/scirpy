@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/base.py#L400-L559
+
+scirpy.pl.embedding
+===================
+
+.. currentmodule:: scirpy.pl
+
+.. autofunction:: embedding

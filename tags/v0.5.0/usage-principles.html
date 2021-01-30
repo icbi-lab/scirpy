@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage principles &mdash; scirpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/typehints.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="scirpy.io.from_ir_objs" href="generated/scirpy.io.from_ir_objs.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage principles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-structure">Data structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ir-biology.html">Immune receptor (IR) model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage principles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/usage-principles.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage-principles">
+<h1>Usage principles<a class="headerlink" href="#usage-principles" title="Permalink to this headline">¶</a></h1>
+<p>Import scirpy as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
+</pre></div>
+</div>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<p>Scirpy is an extension to <a class="reference external" href="https://scanpy.readthedocs.io">Scanpy</a> and adheres to its
+<a class="reference external" href="https://scanpy.readthedocs.io/en/stable/usage-principles.html">workflow principles</a>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/index.html#api" title="(in pandas v1.1.3)"><span class="xref std std-ref">API</span></a> is divided into <em>preprocessing</em> (<code class="docutils literal notranslate"><span class="pre">pp</span></code>), <em>tools</em> (<code class="docutils literal notranslate"><span class="pre">tl</span></code>),
+and <em>plotting</em> (<code class="docutils literal notranslate"><span class="pre">pl</span></code>).</p></li>
+<li><p>All functions work on <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> objects.</p></li>
+<li><p>The <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> instance is modified inplace, unless the functions
+is called with the keyword argument <code class="docutils literal notranslate"><span class="pre">inplace=False</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>We decided to handle a few minor points differenlty to Scanpy:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Plotting functions with inexpensive computations (e.g. <a class="reference internal" href="generated/scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonal_expansion()</span></code></a>)
+call the corresponding tool (<a class="reference internal" href="generated/scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonal_expansion()</span></code></a>) on-the-fly and
+don’t store the results in the <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object.</p></li>
+<li><p>All plotting functions, by default, return a <a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.3.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object,
+or a list of such.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="data-structure">
+<span id="id1"></span><h2>Data structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">¶</a></h2>
+<p>For instructions how to load data into scirpy, see <a class="reference internal" href="tutorials/tutorial_io.html#importing-data"><span class="std std-ref">Loading adaptive Immune Receptor (IR)-sequencing data with Scirpy</span></a>.</p>
+<p>Scirpy leverages the <a class="reference external" href="https://github.com/theislab/anndata">AnnData</a> data structure
+which combines a gene expression matrix (<code class="docutils literal notranslate"><span class="pre">.X</span></code>), gene-level annotations (<code class="docutils literal notranslate"><span class="pre">.var</span></code>) and
+cell-level annotations (<code class="docutils literal notranslate"><span class="pre">.obs</span></code>) into a single object. <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> forms the basis for the
+<a class="reference external" href="https://scanpy.readthedocs.io/en/stable/usage-principles.html">Scanpy analysis workflow</a>
+for single-cell transcriptomics data.</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="_images/anndata.svg"><img alt="_images/anndata.svg" src="_images/anndata.svg" width="350px" /></a>
+<p class="caption"><span class="caption-text">Image by <a class="reference external" href="http://falexwolf.de/">F. Alex Wolf</a>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Scirpy adds the following <a class="reference internal" href="glossary.html#term-IR"><span class="xref std std-term">IR</span></a>-related columns to <code class="docutils literal notranslate"><span class="pre">AnnData.obs</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">has_ir</span></code>: <code class="docutils literal notranslate"><span class="pre">True</span></code> for all cells with an adaptive immune receptor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IR_VJ_1_&lt;attr&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">IR_VJ_2_&lt;attr&gt;</span></code>: columns related to the primary and secondary
+<a class="reference internal" href="glossary.html#term-V-D-J"><span class="xref std std-term">VJ</span></a>-chain of a receptor (<code class="docutils literal notranslate"><span class="pre">TRA</span></code>, <code class="docutils literal notranslate"><span class="pre">TRG</span></code>, <code class="docutils literal notranslate"><span class="pre">IGK</span></code>, or <code class="docutils literal notranslate"><span class="pre">IGL</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IR_VDJ_1_&lt;attr&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">IR_VDJ_2_&lt;attr&gt;</span></code>: columns related to the primary and secondary
+<a class="reference internal" href="glossary.html#term-V-D-J"><span class="xref std std-term">VDJ</span></a>-chain of a receptor (<code class="docutils literal notranslate"><span class="pre">TRB</span></code>, <code class="docutils literal notranslate"><span class="pre">TRD</span></code>, or <code class="docutils literal notranslate"><span class="pre">IGH</span></code>)</p></li>
+</ul>
+</div></blockquote>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;attr&gt;</span></code> is any of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">locus</span></code>: The <a class="reference internal" href="glossary.html#term-Chain-locus"><span class="xref std std-term">IGMT locus name</span></a> of the chain (<code class="docutils literal notranslate"><span class="pre">TRA</span></code>, <code class="docutils literal notranslate"><span class="pre">IGH</span></code>, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">v_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">d_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">j_gene</span></code>: The gene symbols of the respective genes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cdr3</span></code> and <code class="docutils literal notranslate"><span class="pre">cdr3_nt</span></code>: The amino acoid and nucleotide sequences of the CDR3 regions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">junction_ins</span></code>: The number of nucleotides inserted in the <code class="docutils literal notranslate"><span class="pre">VD</span></code> + <code class="docutils literal notranslate"><span class="pre">DJ</span></code> junctions or the <code class="docutils literal notranslate"><span class="pre">VJ</span></code> junction, respectively.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/scirpy.io.from_ir_objs.html" class="btn btn-neutral float-left" title="scirpy.io.from_ir_objs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

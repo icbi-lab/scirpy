@@ -1,0 +1,32 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/ir_dist/__init__.py#L244-L292
+
+scirpy.ir\_dist.IdentityDistanceCalculator
+==========================================
+
+.. currentmodule:: scirpy.ir_dist
+
+.. add toctree option to make autodoc generate the pages
+
+.. autoclass:: IdentityDistanceCalculator
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.ir_dist.IdentityDistanceCalculator.DTYPE
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.ir_dist.IdentityDistanceCalculator.calc_dist_mat
+   
+   

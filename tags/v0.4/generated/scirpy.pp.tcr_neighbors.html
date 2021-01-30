@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>scirpy.pp.tcr_neighbors &mdash; scirpy  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/typehints.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scirpy.tl.group_abundance" href="scirpy.tl.group_abundance.html" />
+    <link rel="prev" title="scirpy.pp.merge_with_tcr" href="scirpy.pp.merge_with_tcr.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#input-output-io">Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="scirpy.pp.merge_with_tcr.html">scirpy.pp.merge_with_tcr</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.pp.tcr_neighbors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tcr-biology.html">T-cell receptor model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>scirpy.pp.tcr_neighbors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L854-L949" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scirpy-pp-tcr-neighbors">
+<h1>scirpy.pp.tcr_neighbors<a class="headerlink" href="#scirpy-pp-tcr-neighbors" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="scirpy.pp.tcr_neighbors">
+<code class="sig-prename descclassname">scirpy.pp.</code><code class="sig-name descname">tcr_neighbors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">metric</span><span class="o">=</span><span class="default_value">'identity'</span></em>, <em class="sig-param"><span class="n">cutoff</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">receptor_arms</span><span class="o">=</span><span class="default_value">'all'</span></em>, <em class="sig-param"><span class="n">dual_tcr</span><span class="o">=</span><span class="default_value">'primary_only'</span></em>, <em class="sig-param"><span class="n">key_added</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence</span><span class="o">=</span><span class="default_value">'nt'</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pp.tcr_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a neighborhood graph based on <a class="reference internal" href="../glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequence similarity.</p>
+<p>All cells with a CDR3 distance <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">cutoff</span></code> receive an edge in the graph.
+Edges are weighted by the distance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5.dev0+g58886f0.d20200709)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>annotated data matrix</p>
+</dd>
+<dt><strong>metric</strong> : <span class="annotation terse">{‘identity’, ‘alignment’, ‘levenshtein’}, <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘identity’, ‘alignment’, ‘levenshtein’], <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">'identity'</span></code>)</dt><dd><p><dl class="simple">
+<dt>You can choose one of the following metrics:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">identity</span></code> – 1 for identical sequences, 0 otherwise.
+See <a class="reference internal" href="scirpy.tcr_dist.IdentityDistanceCalculator.html#scirpy.tcr_dist.IdentityDistanceCalculator" title="scirpy.tcr_dist.IdentityDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdentityDistanceCalculator</span></code></a>.
+This metric implies a cutoff of 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">levenshtein</span></code> – Levenshtein edit distance.
+See <a class="reference internal" href="scirpy.tcr_dist.LevenshteinDistanceCalculator.html#scirpy.tcr_dist.LevenshteinDistanceCalculator" title="scirpy.tcr_dist.LevenshteinDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LevenshteinDistanceCalculator</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alignment</span></code> – Distance based on pairwise sequence alignments using the
+BLOSUM62 matrix. This option is incompatible with nucleotide sequences.
+See <a class="reference internal" href="scirpy.tcr_dist.AlignmentDistanceCalculator.html#scirpy.tcr_dist.AlignmentDistanceCalculator" title="scirpy.tcr_dist.AlignmentDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlignmentDistanceCalculator</span></code></a>.</p></li>
+<li><p>any instance of <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt><strong>cutoff</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">10</span></code>)</dt><dd><p><dl class="simple">
+<dt>All distances <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">cutoff</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">0</span></code> and eliminated from the sparse</dt><dd><p>matrix. A sensible cutoff depends on the distance metric, you can find
+information in the corresponding docs.</p>
+</dd>
+</dl>
+<p>Two cells with a distance &lt;= the cutoff will be connected.
+A cutoff of 0 implies the use of the <code class="docutils literal notranslate"><span class="pre">identity</span></code> metric.</p>
+</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>receptor_arms:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;TRA&quot;</span></code> - only consider TRA sequences</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;TRB&quot;</span></code> - only consider TRB sequences</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code> - both TRA and TRB need to match</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;any&quot;</span></code> - either TRA or TRB need to match</p></li>
+</ul>
+</dd>
+<dt>dual_tcr:</dt><dd><blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;primary_only&quot;</span></code> - only consider most abundant pair of TRA/TRB chains</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;any&quot;</span></code> - consider both pairs of TRA/TRB sequences. Distance must be below
+cutoff for any of the chains.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code> - consider both pairs of TRA/TRB sequences. Distance must be below
+cutoff for all of the chains.</p></li>
+</ul>
+</div></blockquote>
+<p>See also <a class="reference internal" href="../glossary.html#term-Dual-TCR"><span class="xref std std-term">Dual TCR</span></a></p>
+</dd>
+<dt>key_added:</dt><dd><p>dict key under which the result will be stored in <code class="docutils literal notranslate"><span class="pre">adata.uns</span></code>
+when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is True. Defaults to <code class="docutils literal notranslate"><span class="pre">tcr_neighbors_{sequence}_{metric}</span></code>.</p>
+<p>If metric is an instance of <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">scirpy.tcr_dist.DistanceCalculator</span></code></a>,
+<code class="docutils literal notranslate"><span class="pre">{metric}</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code>.</p>
+</dd>
+<dt>sequence:</dt><dd><p>Use amino acid (<code class="docutils literal notranslate"><span class="pre">aa</span></code>) or nulceotide (<code class="docutils literal notranslate"><span class="pre">nt</span></code>) sequences?</p>
+</dd>
+<dt>inplace:</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, store the results in <code class="docutils literal notranslate"><span class="pre">adata.uns</span></code>. Otherwise return
+the results.</p>
+</dd>
+<dt>n_jobs:</dt><dd><p>Number of cores to use for alignment and levenshtein distance.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a>, <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a>], <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a>, <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a>]]</span></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>connectivities<span class="classifier"><span class="annotation terse"><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a></span></span></dt><dd><p>weighted adjacency matrix</p>
+</dd>
+<dt>dist<span class="classifier"><span class="annotation terse"><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.5.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">csr_matrix</span></code></a></span></span></dt><dd><p>cell x cell distance matrix with the distances as computed according to <code class="docutils literal notranslate"><span class="pre">metric</span></code>
+offsetted by 1 to make use of sparse matrices.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scirpy.tl.group_abundance.html" class="btn btn-neutral float-right" title="scirpy.tl.group_abundance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scirpy.pp.merge_with_tcr.html" class="btn btn-neutral float-left" title="scirpy.pp.merge_with_tcr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

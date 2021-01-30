@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_datastructures.py#L101-L103
+
+scirpy.io.TcrCell.add\_chain
+============================
+
+.. currentmodule:: scirpy.io
+
+.. automethod:: TcrCell.add_chain

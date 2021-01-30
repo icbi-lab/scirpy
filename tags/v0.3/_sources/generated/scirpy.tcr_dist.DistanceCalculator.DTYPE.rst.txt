@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py
+
+scirpy.tcr\_dist.DistanceCalculator.DTYPE
+=========================================
+
+.. currentmodule:: scirpy.tcr_dist
+
+.. autoattribute:: DistanceCalculator.DTYPE

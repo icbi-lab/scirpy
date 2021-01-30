@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L438-L489
+
+scirpy.tcr\_dist.tcr\_dist
+==========================
+
+.. currentmodule:: scirpy.tcr_dist
+
+.. autofunction:: tcr_dist

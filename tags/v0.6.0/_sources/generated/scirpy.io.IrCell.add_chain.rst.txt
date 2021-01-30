@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_datastructures.py#L150-L152
+
+scirpy.io.IrCell.add\_chain
+===========================
+
+.. currentmodule:: scirpy.io
+
+.. automethod:: IrCell.add_chain

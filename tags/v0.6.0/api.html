@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; scirpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/typehints.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="scirpy.io.read_h5ad" href="generated/scirpy.io.read_h5ad.html" />
+    <link rel="prev" title="Usage principles" href="usage-principles.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-output-io">Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.read_h5ad.html">scirpy.io.read_h5ad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.read_10x_vdj.html">scirpy.io.read_10x_vdj</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.read_tracer.html">scirpy.io.read_tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.read_bracer.html">scirpy.io.read_bracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.read_airr.html">scirpy.io.read_airr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.IrCell.html">scirpy.io.IrCell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.IrChain.html">scirpy.io.IrChain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.from_ir_objs.html">scirpy.io.from_ir_objs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.io.to_ir_objs.html">scirpy.io.to_ir_objs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.pp.merge_with_ir.html">scirpy.pp.merge_with_ir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.pp.ir_neighbors.html">scirpy.pp.ir_neighbors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generic">Generic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quality-control">Quality control</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.chain_qc.html">scirpy.tl.chain_qc</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#define-and-visualize-clonotypes">Define and visualize clonotypes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.define_clonotype_clusters.html">scirpy.tl.define_clonotype_clusters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.clonotype_convergence.html">scirpy.tl.clonotype_convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.clonotype_network_igraph.html">scirpy.tl.clonotype_network_igraph</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analyse-clonal-diversity">Analyse clonal diversity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.summarize_clonal_expansion.html">scirpy.tl.summarize_clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.clonotype_imbalance.html">scirpy.tl.clonotype_imbalance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#v-d-j-gene-usage">V(D)J gene usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Generic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.embedding.html">scirpy.pl.embedding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.alpha_diversity.html">scirpy.pl.alpha_diversity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.clonal_expansion.html">scirpy.pl.clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.group_abundance.html">scirpy.pl.group_abundance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.spectratype.html">scirpy.pl.spectratype</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.vdj_usage.html">scirpy.pl.vdj_usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.repertoire_overlap.html">scirpy.pl.repertoire_overlap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.clonotype_imbalance.html">scirpy.pl.clonotype_imbalance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.clonotype_network.html">scirpy.pl.clonotype_network</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scirpy.pl.base">Base plotting functions: <code class="docutils literal notranslate"><span class="pre">pl.base</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.base.bar.html">scirpy.pl.base.bar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.base.line.html">scirpy.pl.base.line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.base.barh.html">scirpy.pl.base.barh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.base.curve.html">scirpy.pl.base.curve</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scirpy.pl.styling">Plot styling: <code class="docutils literal notranslate"><span class="pre">pl.styling</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.styling.apply_style_to_axes.html">scirpy.pl.styling.apply_style_to_axes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.pl.styling.style_axes.html">scirpy.pl.styling.style_axes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.datasets.wu2020.html">scirpy.datasets.wu2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.datasets.wu2020_3k.html">scirpy.datasets.wu2020_3k</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.datasets.maynard2020.html">scirpy.datasets.maynard2020</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.util.graph.layout_components.html">scirpy.util.graph.layout_components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-scirpy.ir_dist">IR distance metrics: <code class="docutils literal notranslate"><span class="pre">ir_dist</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.ir_dist.sequence_dist.html">scirpy.ir_dist.sequence_dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.ir_dist.DistanceCalculator.html">scirpy.ir_dist.DistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.ir_dist.ParallelDistanceCalculator.html">scirpy.ir_dist.ParallelDistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.ir_dist.IdentityDistanceCalculator.html">scirpy.ir_dist.IdentityDistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.ir_dist.LevenshteinDistanceCalculator.html">scirpy.ir_dist.LevenshteinDistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.ir_dist.HammingDistanceCalculator.html">scirpy.ir_dist.HammingDistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/scirpy.ir_dist.AlignmentDistanceCalculator.html">scirpy.ir_dist.AlignmentDistanceCalculator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ir-biology.html">Immune receptor (IR) model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/api.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<p>Import scirpy together with scanpy as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
+</pre></div>
+</div>
+<p>For consistency, the scirpy API tries to follow the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/index.html">scanpy API</a>
+as closely as possible.</p>
+<div class="section" id="input-output-io">
+<span id="api-io"></span><h2>Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code><a class="headerlink" href="#input-output-io" title="Permalink to this headline">¶</a></h2>
+<p>The following functions allow to import <a class="reference internal" href="glossary.html#term-V-D-J"><span class="xref std std-term">V(D)J</span></a> information from various
+formats.</p>
+<span class="target" id="module-scirpy.io"></span><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.io.read_h5ad.html#scirpy.io.read_h5ad" title="scirpy.io.read_h5ad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_h5ad</span></code></a>(filename[, backed, as_sparse, …])</p></td>
+<td><p>Read <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code>-formatted hdf5 file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.io.read_10x_vdj.html#scirpy.io.read_10x_vdj" title="scirpy.io.read_10x_vdj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_10x_vdj</span></code></a>(path[, filtered])</p></td>
+<td><p>Read <a class="reference internal" href="glossary.html#term-IR"><span class="xref std std-term">IR</span></a> data from 10x Genomics cell-ranger output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.io.read_tracer.html#scirpy.io.read_tracer" title="scirpy.io.read_tracer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_tracer</span></code></a>(path)</p></td>
+<td><p>Read data from <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (<a class="bibtex reference internal" href="zzz_bibliography.html#stubbington2016-kh" id="id1">[SLonnbergP+16]</a>).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.io.read_bracer.html#scirpy.io.read_bracer" title="scirpy.io.read_bracer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_bracer</span></code></a>(path)</p></td>
+<td><p>Read data from <a class="reference external" href="https://github.com/Teichlab/bracer">BraCeR</a> (<a class="bibtex reference internal" href="zzz_bibliography.html#lindeman2018" id="id2">[LEM+18]</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.io.read_airr.html#scirpy.io.read_airr" title="scirpy.io.read_airr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_airr</span></code></a>(path)</p></td>
+<td><p>Read AIRR-compliant data.</p></td>
+</tr>
+</tbody>
+</table>
+<p>To convert own formats into the scirpy <a class="reference internal" href="usage-principles.html#data-structure"><span class="std std-ref">Data structure</span></a>, we recommend building
+a list of <a class="reference internal" href="generated/scirpy.io.IrCell.html#scirpy.io.IrCell" title="scirpy.io.IrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">IrCell</span></code></a> objects first, and then converting them into
+an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object using <a class="reference internal" href="generated/scirpy.io.from_ir_objs.html#scirpy.io.from_ir_objs" title="scirpy.io.from_ir_objs"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_ir_objs()</span></code></a>.
+For more details, check the <a class="reference internal" href="tutorials/tutorial_io.html#importing-data"><span class="std std-ref">Data loading tutorial</span></a>.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.io.IrCell.html#scirpy.io.IrCell" title="scirpy.io.IrCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IrCell</span></code></a>(cell_id, *[, multi_chain])</p></td>
+<td><p>Data structure for a Cell with immune receptors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.io.IrChain.html#scirpy.io.IrChain" title="scirpy.io.IrChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IrChain</span></code></a>(locus, *[, cdr3, cdr3_nt, expr, …])</p></td>
+<td><p>Data structure for an immune cell receptor chain.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.io.from_ir_objs.html#scirpy.io.from_ir_objs" title="scirpy.io.from_ir_objs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_ir_objs</span></code></a>(ir_objs)</p></td>
+<td><p>Convert a collection of <a class="reference internal" href="generated/scirpy.io.IrCell.html#scirpy.io.IrCell" title="scirpy.io.IrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">IrCell</span></code></a> objects to an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.io.to_ir_objs.html#scirpy.io.to_ir_objs" title="scirpy.io.to_ir_objs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_ir_objs</span></code></a>(adata)</p></td>
+<td><p>Convert an adata object with IR information back to a list of IrCells.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-scirpy.pp">
+<span id="preprocessing-pp"></span><h2>Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code><a class="headerlink" href="#module-scirpy.pp" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pp.merge_with_ir.html#scirpy.pp.merge_with_ir" title="scirpy.pp.merge_with_ir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_with_ir</span></code></a>(adata, adata_ir[, on])</p></td>
+<td><p>Merge adaptive immune receptor (<a class="reference internal" href="glossary.html#term-IR"><span class="xref std std-term">IR</span></a>) data with transcriptomics data into a single <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pp.ir_neighbors.html#scirpy.pp.ir_neighbors" title="scirpy.pp.ir_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ir_neighbors</span></code></a>(adata, *[, metric, cutoff, …])</p></td>
+<td><p>Construct a neighborhood graph based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequence similarity.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tools-tl">
+<h2>Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code><a class="headerlink" href="#tools-tl" title="Permalink to this headline">¶</a></h2>
+<p>Tools add an interpretable annotation to the <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object
+which usually can be visualized by a corresponding plotting function.</p>
+<span class="target" id="module-scirpy.tl"></span><div class="section" id="generic">
+<h3>Generic<a class="headerlink" href="#generic" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.group_abundance.html#scirpy.tl.group_abundance" title="scirpy.tl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby[, …])</p></td>
+<td><p>Summarizes the number/fraction of cells of a certain category by a certain group.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="quality-control">
+<h3>Quality control<a class="headerlink" href="#quality-control" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.chain_qc.html#scirpy.tl.chain_qc" title="scirpy.tl.chain_qc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chain_qc</span></code></a>(adata, *[, inplace, key_added])</p></td>
+<td><p>Perform quality control based on the receptor-chain pairing configuration.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="define-and-visualize-clonotypes">
+<h3>Define and visualize clonotypes<a class="headerlink" href="#define-and-visualize-clonotypes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></a>(adata, *[, key_added])</p></td>
+<td><p>Define <a class="reference internal" href="glossary.html#term-Clonotype"><span class="xref std std-term">clonotypes</span></a> based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> nucleic acid sequence identity.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.tl.define_clonotype_clusters.html#scirpy.tl.define_clonotype_clusters" title="scirpy.tl.define_clonotype_clusters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotype_clusters</span></code></a>(adata, *[, …])</p></td>
+<td><p>Define <a class="reference internal" href="glossary.html#term-Clonotype-cluster"><span class="xref std std-term">clonotype clusters</span></a> based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> distance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_convergence.html#scirpy.tl.clonotype_convergence" title="scirpy.tl.clonotype_convergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_convergence</span></code></a>(adata, *, key_coarse, …)</p></td>
+<td><p>Finds evidence for <a class="reference internal" href="glossary.html#term-Convergent-evolution-of-clonotypes"><span class="xref std std-term">Convergent evolution of clonotypes</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, sequence, …])</p></td>
+<td><p>Layouts the clonotype network for plotting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_network_igraph.html#scirpy.tl.clonotype_network_igraph" title="scirpy.tl.clonotype_network_igraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network_igraph</span></code></a>(adata[, basis])</p></td>
+<td><p>Get an <code class="docutils literal notranslate"><span class="pre">igraph</span></code> object representing the clonotype network.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="analyse-clonal-diversity">
+<h3>Analyse clonal diversity<a class="headerlink" href="#analyse-clonal-diversity" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, *[, target_col, …])</p></td>
+<td><p>Adds a column to <code class="docutils literal notranslate"><span class="pre">obs</span></code> recording which clonotypes are expanded.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.tl.summarize_clonal_expansion.html#scirpy.tl.summarize_clonal_expansion" title="scirpy.tl.summarize_clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summarize_clonal_expansion</span></code></a>(adata, groupby, *)</p></td>
+<td><p>Summarizes clonal expansion by a grouping variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.alpha_diversity.html#scirpy.tl.alpha_diversity" title="scirpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Computes the alpha diversity of clonotypes within a group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.tl.repertoire_overlap.html#scirpy.tl.repertoire_overlap" title="scirpy.tl.repertoire_overlap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repertoire_overlap</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Compute distance between cell groups based on clonotype overlap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_imbalance.html#scirpy.tl.clonotype_imbalance" title="scirpy.tl.clonotype_imbalance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_imbalance</span></code></a>(adata, replicate_col, …)</p></td>
+<td><p>Aims to find clonotypes that are the most enriched or depleted in a category.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="v-d-j-gene-usage">
+<h3>V(D)J gene usage<a class="headerlink" href="#v-d-j-gene-usage" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.spectratype.html#scirpy.tl.spectratype" title="scirpy.tl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
+<td><p>Summarizes the distribution of <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> region lengths.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-scirpy.pl">
+<span id="plotting-pl"></span><h2>Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code><a class="headerlink" href="#module-scirpy.pl" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Generic<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.embedding.html#scirpy.pl.embedding" title="scirpy.pl.embedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embedding</span></code></a>(adata, basis, *[, color, …])</p></td>
+<td><p>A customized wrapper to the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.6.1.dev0+g5533b64.d20200817)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a> function.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tools">
+<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
+<p>Every of these plotting functions has a corresponding <em>tool</em> in the <a class="reference internal" href="#module-scirpy.tl" title="scirpy.tl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scirpy.tl</span></code></a>
+section. Depending on the computational load, tools are either invoked on-the-fly
+when calling the plotting function or need to be precomputed and stored in
+<a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> previously.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.alpha_diversity.html#scirpy.pl.alpha_diversity" title="scirpy.pl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Plot the alpha diversity per group.<br />`<img src="_static/api/scirpy.pl.alpha_diversity.svg" style="width: 300px" /></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Visualize clonal expansion.<br />`<img src="_static/api/scirpy.pl.clonal_expansion.svg" style="width: 300px" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby[, …])</p></td>
+<td><p>Plots the number of cells per group, split up by a categorical variable.<br />`<img src="_static/api/scirpy.pl.group_abundance.svg" style="width: 300px" /></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, cdr3_col, combine_fun, …])</p></td>
+<td><p>Show the distribution of CDR3 region lengths.<br />`<img src="_static/api/scirpy.pl.spectratype.svg" style="width: 300px" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vdj_usage</span></code></a>(adata, *[, vdj_cols, …])</p></td>
+<td><p>Creates a ribbon plot of the most abundant VDJ combinations.<br />`<img src="_static/api/scirpy.pl.vdj_usage.svg" style="width: 300px" /></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pl.repertoire_overlap.html#scirpy.pl.repertoire_overlap" title="scirpy.pl.repertoire_overlap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repertoire_overlap</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Visualizes overlap betwen a pair of samples on a scatter plot or<br />`<img src="_static/api/scirpy.pl.repertoire_overlap.svg" style="width: 300px" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.clonotype_imbalance.html#scirpy.pl.clonotype_imbalance" title="scirpy.pl.clonotype_imbalance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_imbalance</span></code></a>(adata, replicate_col, …)</p></td>
+<td><p>Aims to find clonotypes that are the most enriched or depleted in a category.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, color, …])</p></td>
+<td><p>Plot the Clonotype network.<br />`<img src="_static/api/scirpy.pl.clonotype_network.png" style="width: 300px" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-scirpy.pl.base">
+<span id="base-plotting-functions-pl-base"></span><h3>Base plotting functions: <code class="docutils literal notranslate"><span class="pre">pl.base</span></code><a class="headerlink" href="#module-scirpy.pl.base" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.base.bar.html#scirpy.pl.base.bar" title="scirpy.pl.base.bar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bar</span></code></a>(data, *[, ax, stacked, style, …])</p></td>
+<td><p>Basic plotting function built on top of bar plot in Pandas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pl.base.line.html#scirpy.pl.base.line" title="scirpy.pl.base.line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line</span></code></a>(data, *[, ax, style, style_kws, fig_kws])</p></td>
+<td><p>Basic plotting function built on top of line plot in Pandas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.base.barh.html#scirpy.pl.base.barh" title="scirpy.pl.base.barh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">barh</span></code></a>(data, *[, ax, style, style_kws, fig_kws])</p></td>
+<td><p>Basic plotting function built on top of bar plot in Pandas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pl.base.curve.html#scirpy.pl.base.curve" title="scirpy.pl.base.curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curve</span></code></a>(data, *[, ax, curve_layout, shade, …])</p></td>
+<td><p>Basic plotting function for drawing KDE-smoothed curves.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-scirpy.pl.styling">
+<span id="plot-styling-pl-styling"></span><h3>Plot styling: <code class="docutils literal notranslate"><span class="pre">pl.styling</span></code><a class="headerlink" href="#module-scirpy.pl.styling" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.pl.styling.apply_style_to_axes.html#scirpy.pl.styling.apply_style_to_axes" title="scirpy.pl.styling.apply_style_to_axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_style_to_axes</span></code></a>(ax, style, style_kws)</p></td>
+<td><p>Apply a predefined style to an axis object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.pl.styling.style_axes.html#scirpy.pl.styling.style_axes" title="scirpy.pl.styling.style_axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">style_axes</span></code></a>(ax[, title, legend_title, xlab, …])</p></td>
+<td><p>Style an axes object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-scirpy.datasets">
+<span id="datasets-datasets"></span><h2>Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code><a class="headerlink" href="#module-scirpy.datasets" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.datasets.wu2020.html#scirpy.datasets.wu2020" title="scirpy.datasets.wu2020"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wu2020</span></code></a>()</p></td>
+<td><p>Return the dataset from <a class="bibtex reference internal" href="zzz_bibliography.html#wu2020" id="id4">[WMdA+20]</a> as AnnData object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.datasets.wu2020_3k.html#scirpy.datasets.wu2020_3k" title="scirpy.datasets.wu2020_3k"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wu2020_3k</span></code></a>()</p></td>
+<td><p>Return the dataset from <a class="bibtex reference internal" href="zzz_bibliography.html#wu2020" id="id5">[WMdA+20]</a> as AnnData object, downsampled to 3000 TCR-containing cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.datasets.maynard2020.html#scirpy.datasets.maynard2020" title="scirpy.datasets.maynard2020"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maynard2020</span></code></a>()</p></td>
+<td><p>Return the dataset from <a class="bibtex reference internal" href="zzz_bibliography.html#maynard2020" id="id6">[MMR+20]</a> as AnnData object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-scirpy.util">
+<span id="utility-functions-util"></span><h2>Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code><a class="headerlink" href="#module-scirpy.util" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.util.graph.layout_components.html#scirpy.util.graph.layout_components" title="scirpy.util.graph.layout_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph.layout_components</span></code></a>(graph[, …])</p></td>
+<td><p>Compute a graph layout by layouting all connected components individually.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-scirpy.ir_dist">
+<span id="ir-distance-metrics-ir-dist"></span><h2>IR distance metrics: <code class="docutils literal notranslate"><span class="pre">ir_dist</span></code><a class="headerlink" href="#module-scirpy.ir_dist" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.ir_dist.sequence_dist.html#scirpy.ir_dist.sequence_dist" title="scirpy.ir_dist.sequence_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sequence_dist</span></code></a>(unique_seqs[, unique_seqs2, …])</p></td>
+<td><p>Calculate a sequence x sequence distance matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.ir_dist.DistanceCalculator.html#scirpy.ir_dist.DistanceCalculator" title="scirpy.ir_dist.DistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a>(cutoff)</p></td>
+<td><p>Abstract base class for a <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a>-sequence distance calculator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.ir_dist.ParallelDistanceCalculator.html#scirpy.ir_dist.ParallelDistanceCalculator" title="scirpy.ir_dist.ParallelDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParallelDistanceCalculator</span></code></a>(cutoff, *[, …])</p></td>
+<td><p>Abstract base class for a DistanceCalculator that computes distances in parallel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.ir_dist.IdentityDistanceCalculator.html#scirpy.ir_dist.IdentityDistanceCalculator" title="scirpy.ir_dist.IdentityDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityDistanceCalculator</span></code></a>([cutoff])</p></td>
+<td><p>Calculates the Identity-distance between <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.ir_dist.LevenshteinDistanceCalculator.html#scirpy.ir_dist.LevenshteinDistanceCalculator" title="scirpy.ir_dist.LevenshteinDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LevenshteinDistanceCalculator</span></code></a>([cutoff])</p></td>
+<td><p>Calculates the Levenshtein edit-distance between sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.ir_dist.HammingDistanceCalculator.html#scirpy.ir_dist.HammingDistanceCalculator" title="scirpy.ir_dist.HammingDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HammingDistanceCalculator</span></code></a>([cutoff])</p></td>
+<td><p>Calculates the Hamming distance between sequences of identical length.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.ir_dist.AlignmentDistanceCalculator.html#scirpy.ir_dist.AlignmentDistanceCalculator" title="scirpy.ir_dist.AlignmentDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignmentDistanceCalculator</span></code></a>([cutoff, …])</p></td>
+<td><p>Calculates distance between sequences based on pairwise sequence alignment.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/scirpy.io.read_h5ad.html" class="btn btn-neutral float-right" title="scirpy.io.read_h5ad" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage-principles.html" class="btn btn-neutral float-left" title="Usage principles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L216-L242
+
+scirpy.tcr\_dist.AlignmentDistanceCalculator.calc\_dist\_mat
+============================================================
+
+.. currentmodule:: scirpy.tcr_dist
+
+.. automethod:: AlignmentDistanceCalculator.calc_dist_mat

@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/ir_dist/__init__.py
+
+scirpy.ir\_dist.IdentityDistanceCalculator.DTYPE
+================================================
+
+.. currentmodule:: scirpy.ir_dist
+
+.. autoattribute:: IdentityDistanceCalculator.DTYPE

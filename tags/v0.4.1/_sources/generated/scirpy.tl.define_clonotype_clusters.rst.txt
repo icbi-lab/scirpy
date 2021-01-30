@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotypes.py#L54-L93
+
+scirpy.tl.define\_clonotype\_clusters
+=====================================
+
+.. currentmodule:: scirpy.tl
+
+.. autofunction:: define_clonotype_clusters

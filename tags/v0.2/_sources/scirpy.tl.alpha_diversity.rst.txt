@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_diversity.py#L8-L73
+
+scirpy.tl.alpha\_diversity
+==========================
+
+.. currentmodule:: scirpy.tl
+
+.. autofunction:: alpha_diversity

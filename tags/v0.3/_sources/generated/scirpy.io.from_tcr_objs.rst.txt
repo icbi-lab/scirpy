@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_io.py#L44-L69
+
+scirpy.io.from\_tcr\_objs
+=========================
+
+.. currentmodule:: scirpy.io
+
+.. autofunction:: from_tcr_objs

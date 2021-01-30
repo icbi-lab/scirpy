@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_datastructures.py
+
+scirpy.io.TcrCell.cell\_id
+==========================
+
+.. currentmodule:: scirpy.io
+
+.. autoproperty:: TcrCell.cell_id

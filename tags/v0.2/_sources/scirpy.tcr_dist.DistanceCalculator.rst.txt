@@ -1,0 +1,32 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L61-L99
+
+scirpy.tcr\_dist.DistanceCalculator
+===================================
+
+.. currentmodule:: scirpy.tcr_dist
+
+.. add toctree option to make autodoc generate the pages
+
+.. autoclass:: DistanceCalculator
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.tcr_dist.DistanceCalculator.DTYPE
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: .
+   
+      ~scirpy.tcr_dist.DistanceCalculator.calc_dist_mat
+   
+   

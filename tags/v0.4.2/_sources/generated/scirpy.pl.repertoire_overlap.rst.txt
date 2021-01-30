@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/_repertoire_overlap.py#L14-L189
+
+scirpy.pl.repertoire\_overlap
+=============================
+
+.. currentmodule:: scirpy.pl
+
+.. autofunction:: repertoire_overlap

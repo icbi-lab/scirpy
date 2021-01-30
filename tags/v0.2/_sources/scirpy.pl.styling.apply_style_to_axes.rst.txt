@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/styling.py#L8-L29
+
+scirpy.pl.styling.apply\_style\_to\_axes
+========================================
+
+.. currentmodule:: scirpy.pl.styling
+
+.. autofunction:: apply_style_to_axes

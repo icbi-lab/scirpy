@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/ir_dist/__init__.py#L884-L979
+
+scirpy.pp.ir\_neighbors
+=======================
+
+.. currentmodule:: scirpy.pp
+
+.. autofunction:: ir_neighbors

@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L125-L129
+
+scirpy.tcr\_dist.IdentityDistanceCalculator.calc\_dist\_mat
+===========================================================
+
+.. currentmodule:: scirpy.tcr_dist
+
+.. automethod:: IdentityDistanceCalculator.calc_dist_mat

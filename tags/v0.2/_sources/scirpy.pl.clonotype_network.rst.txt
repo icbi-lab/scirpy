@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/_clonotypes.py#L90-L204
+
+scirpy.pl.clonotype\_network
+============================
+
+.. currentmodule:: scirpy.pl
+
+.. autofunction:: clonotype_network

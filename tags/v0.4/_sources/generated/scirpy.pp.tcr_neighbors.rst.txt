@@ -1,0 +1,8 @@
+:github_url: https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L854-L949
+
+scirpy.pp.tcr\_neighbors
+========================
+
+.. currentmodule:: scirpy.pp
+
+.. autofunction:: tcr_neighbors

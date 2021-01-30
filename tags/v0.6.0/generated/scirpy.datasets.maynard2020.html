@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>scirpy.datasets.maynard2020 &mdash; scirpy  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/scanpy.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/typehints.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scirpy.util.graph.layout_components" href="scirpy.util.graph.layout_components.html" />
+    <link rel="prev" title="scirpy.datasets.wu2020_3k" href="scirpy.datasets.wu2020_3k.html" />
+ 
+
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/scirpy_logo_bright.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#input-output-io">Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="scirpy.datasets.wu2020.html">scirpy.datasets.wu2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.datasets.wu2020_3k.html">scirpy.datasets.wu2020_3k</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.datasets.maynard2020</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.ir_dist">IR distance metrics: <code class="docutils literal notranslate"><span class="pre">ir_dist</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ir-biology.html">Immune receptor (IR) model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scirpy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>scirpy.datasets.maynard2020</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/datasets/__init__.py#L56-L81" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scirpy-datasets-maynard2020">
+<h1>scirpy.datasets.maynard2020<a class="headerlink" href="#scirpy-datasets-maynard2020" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="scirpy.datasets.maynard2020">
+<code class="sig-prename descclassname">scirpy.datasets.</code><code class="sig-name descname">maynard2020</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.datasets.maynard2020" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the dataset from <a class="bibtex reference internal" href="../zzz_bibliography.html#maynard2020" id="id1">[MMR+20]</a> as AnnData object.</p>
+<p>21k cells from NSCLC profiled with Smart-seq2, of which 3,500 have <a class="reference internal" href="../glossary.html#term-TCR"><span class="xref std std-term">TCRs</span></a>
+and 1,500 have <a class="reference internal" href="../glossary.html#term-BCR"><span class="xref std std-term">BCRs</span></a>.</p>
+<p>The raw FASTQ files have been obtained from <a class="reference external" href="https://www.ebi.ac.uk/ena/browser/view/PRJNA591860">PRJNA591860</a>
+and processed using the nf-core <a class="reference external" href="https://github.com/nf-core/smartseq2/">Smart-seq2 pipeline</a>.</p>
+<p>The processed files have been imported and transformed into an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">anndata.AnnData</span></code></a>
+object using the following script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %env OPENBLAS_NUM_THREADS=16</span>
+<span class="c1"># %env OMP_NUM_THREADS=16</span>
+<span class="c1"># %env MKL_NUM_THREADS=16</span>
+<span class="c1"># %env OMP_NUM_cpus=16</span>
+<span class="c1"># %env MKL_NUM_cpus=16</span>
+<span class="c1"># %env OPENBLAS_NUM_cpus=16</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;../../..&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># The dataset has been downloaded from ENA and then processed using the Smart-seq2 Pipeline:</span>
+<span class="c1"># https://github.com/nf-core/smartseq2/</span>
+
+<span class="n">DATASET_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/data/datasets/Maynard_Bivona_2020_NSCLC/&quot;</span><span class="p">)</span>
+
+<span class="c1"># ### Read counts and TPMs</span>
+
+<span class="n">count_mat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">DATASET_DIR</span> <span class="o">/</span> <span class="s2">&quot;smartseq2_pipeline/resultCOUNT.txt&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Geneid&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">tpm_mat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">DATASET_DIR</span> <span class="o">/</span> <span class="s2">&quot;smartseq2_pipeline/resultTPM.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># summarize to gene symbol for the ~300 duplicated symbols.</span>
+<span class="n">tpm_mat_symbol</span> <span class="o">=</span> <span class="n">tpm_mat</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;gene_id&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># ### Read and sanitize metadata</span>
+
+<span class="c1"># +</span>
+<span class="n">sample_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATASET_DIR</span> <span class="o">/</span> <span class="s2">&quot;scripts/sra_sample_info.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cell_metadata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">DATASET_DIR</span> <span class="o">/</span> <span class="s2">&quot;scripts/cell_metadata.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="c1"># combine metadata</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">sample_info</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">cell_metadata</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;cell_ID&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;cell_id&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Run&quot;</span><span class="p">)</span>
+<span class="c1"># -</span>
+
+<span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;Assay Type&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AvgSpotLen&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SRA Study&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReleaseDate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Bases&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;disease&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Biomaterial_provider&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BioProject&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Isolate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Sample Name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BioSample&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BioSampleModel&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Bytes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Center Name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Consent&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DATASTORE filetype&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DATASTORE provider&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DATASTORE region&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Experiment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Instrument&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LibraryLayout&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Library Name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LibrarySelection&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cell_ID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LibrarySource&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Organism&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Platform&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gender&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SAMPLE_TYPE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TISSUE&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Age&quot;</span><span class="p">:</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;smokingHx&quot;</span><span class="p">:</span> <span class="s2">&quot;smoking_status&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stage.at.dx&quot;</span><span class="p">:</span> <span class="s2">&quot;stage_at_diagnosis&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">meta</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+
+<span class="c1"># ### Find all cells for which we have both counts, TPM and annotation</span>
+
+<span class="n">has_counts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">count_mat</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">has_tpm</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">tpm_mat</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">has_meta</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">cell_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">has_counts</span> <span class="o">&amp;</span> <span class="n">has_tpm</span> <span class="o">&amp;</span> <span class="n">has_meta</span><span class="p">))</span>
+
+<span class="c1"># ### Build adata</span>
+
+<span class="n">var</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">count_mat</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;Geneid&quot;</span><span class="p">:</span> <span class="s2">&quot;gene_symbol&quot;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">tpm_mat_symbol</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">cell_ids</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>
+    <span class="n">layers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;raw_counts&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">count_mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">cell_ids</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)},</span>
+    <span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">,</span>
+    <span class="n">obs</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell_ids</span><span class="p">,</span> <span class="p">:],</span>
+<span class="p">)</span>
+
+<span class="n">adata_tcr</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_tracer</span><span class="p">(</span>
+    <span class="s2">&quot;/data/datasets/Maynard_Bivona_2020_NSCLC/smartseq2_pipeline/TraCeR&quot;</span>
+<span class="p">)</span>
+<span class="n">adata_bcr</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_bracer</span><span class="p">(</span>
+    <span class="s2">&quot;/data/datasets/Maynard_Bivona_2020_NSCLC/smartseq2_pipeline/BraCeR/filtered_BCR_summary/changeodb.tab&quot;</span>
+<span class="p">)</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">merge_with_ir</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">adata_tcr</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">merge_with_ir</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">adata_bcr</span><span class="p">)</span>
+
+<span class="c1"># Write out the dataset</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="s2">&quot;maynard2020.h5ad&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;lzf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scirpy.util.graph.layout_components.html" class="btn btn-neutral float-right" title="scirpy.util.graph.layout_components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scirpy.datasets.wu2020_3k.html" class="btn btn-neutral float-left" title="scirpy.datasets.wu2020_3k" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Gregor Sturm, Tamas Szabo.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
